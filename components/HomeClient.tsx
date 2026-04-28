@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 
 import { HostControls } from "@/components/HostControls";
@@ -25,6 +25,9 @@ export function HomeClient() {
   const [playerName, setPlayerName] = useState("");
   const [busy, setBusy] = useState(false);
   const [sessionLockedOut, setSessionLockedOut] = useState(false);
+  const [hostPasskey, setHostPasskey] = useState("");
+  const [hostAccessGranted, setHostAccessGranted] = useState(false);
+  const [hostAccessError, setHostAccessError] = useState("");
 
   useEffect(() => {
     return subscribeToSession((nextSession) => {
@@ -36,6 +39,9 @@ export function HomeClient() {
     });
   }, []);
   useEffect(() => subscribeToLeaderboard(setResults), []);
+  useEffect(() => {
+    setHostAccessGranted(window.sessionStorage.getItem("gquiz-host-auth") === "1");
+  }, []);
 
   const isHostMode = searchParams.get("host") === "1";
   const quizDescription =
@@ -70,6 +76,22 @@ export function HomeClient() {
     setPlayerName(trimmedName);
   }
 
+  function handleHostUnlock(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (hostPasskey === "qu1z@dm1n") {
+      window.sessionStorage.setItem("gquiz-host-auth", "1");
+      setHostAccessGranted(true);
+      setHostAccessError("");
+      setHostPasskey("");
+      return;
+    }
+
+    window.sessionStorage.removeItem("gquiz-host-auth");
+    setHostAccessGranted(false);
+    setHostAccessError("Invalid passkey.");
+  }
+
   return (
     <main className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col gap-5 px-4 py-4 sm:px-6 lg:px-8 lg:py-6">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
@@ -98,6 +120,7 @@ export function HomeClient() {
       </section>
 
       {isHostMode ? (
+        hostAccessGranted ? (
         <div className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.85fr)]">
           <section className="space-y-4">
             <HostControls
@@ -112,6 +135,44 @@ export function HomeClient() {
             <Leaderboard results={results} highlightName={playerName || undefined} />
           </aside>
         </div>
+        ) : (
+          <section className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(9,14,28,0.82),rgba(13,19,37,0.78))] p-6 text-white shadow-[0_24px_70px_rgba(15,23,42,0.42)] backdrop-blur-xl sm:p-7">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-300/70">
+              Host access required
+            </p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-[1.7rem]">
+              Enter the passkey to open host controls.
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-slate-300/80">
+              This page is locked until the correct passkey is entered.
+            </p>
+
+            <form className="mt-6 space-y-4" onSubmit={handleHostUnlock}>
+              <label className="block space-y-2">
+                <span className="text-sm font-medium text-slate-200/80">Passkey</span>
+                <input
+                  value={hostPasskey}
+                  onChange={(event) => setHostPasskey(event.target.value)}
+                  type="password"
+                  autoComplete="current-password"
+                  placeholder="Enter host passkey"
+                  className="w-full rounded-[1.25rem] border border-white/10 bg-white/5 px-4 py-3 text-base text-white outline-none ring-0 transition placeholder:text-slate-400 focus:border-[#4285F4]/60 focus:shadow-[0_0_0_4px_rgba(66,133,244,0.14)]"
+                />
+              </label>
+
+              {hostAccessError ? (
+                <p className="text-sm font-medium text-[#FBBC05]">{hostAccessError}</p>
+              ) : null}
+
+              <button
+                type="submit"
+                className="flex w-full items-center justify-center rounded-[1.25rem] bg-[#4285F4] px-4 py-3 text-base font-semibold text-white shadow-[0_14px_32px_rgba(66,133,244,0.28)] transition hover:bg-[#5a95f5]"
+              >
+                Unlock host panel
+              </button>
+            </form>
+          </section>
+        )
       ) : playerName ? (
         <section className="space-y-4">
           <Quiz
