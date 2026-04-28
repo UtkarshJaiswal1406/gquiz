@@ -50,6 +50,7 @@ export function Quiz({ playerName, session, leaderboard }: QuizProps) {
   const [stats, setStats] = useState<QuizStats>({
     correctAnswers: 0,
     currentStreak: 0,
+    difficultyStreak: 0,
     maxStreak: 0,
     difficulty: 1,
     questionNumber: 1,
