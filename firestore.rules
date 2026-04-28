@@ -1,24 +1,35 @@
-PS C:\Users\1406u\OneDrive\Desktop\Utkarsh\Workstation\gquiz> npm run build
+rules_version = '2';
 
-> gquiz@0.1.0 build
-> next build
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isValidSession(data) {
+      return data.keys().hasOnly(['status', 'startTime', 'endTime'])
+        && data.status in ['waiting', 'active', 'ended']
+        && (data.startTime is int || data.startTime == null)
+        && (data.endTime is int || data.endTime == null);
+    }
 
-▲ Next.js 16.2.4 (Turbopack)
-- Environments: .env.local
+    function isValidResult(data) {
+      return data.keys().hasOnly(['name', 'score', 'timeTaken', 'createdAt'])
+        && data.name is string
+        && data.name.size() > 0
+        && data.name.size() <= 40
+        && data.score is int
+        && data.timeTaken is int
+        && data.timeTaken >= 0
+        && data.createdAt is int;
+    }
 
-  Creating an optimized production build ...
-✓ Compiled successfully in 4.0s
-  Running TypeScript  ...Failed to type check.
+    match /quizSessions/{sessionId} {
+      allow read: if true;
+      allow write: if isValidSession(request.resource.data);
+    }
 
-./components/Quiz.tsx:50:49
-Type error: Argument of type '{ correctAnswers: number; currentStreak: number; maxStreak: number; difficulty: 1; questionNumber: number; }' is not assignable to parameter of type 'QuizStats | (() => QuizStats)'.
-  Property 'difficultyStreak' is missing in type '{ correctAnswers: number; currentStreak: number; maxStreak: number; difficulty: 1; questionNumber: number; }' but required in type 'QuizStats'.
-
-  48 |   const [secondsLeft, setSecondsLeft] = useState(QUESTION_TIME_SECONDS);
-  49 |   const [feedback, setFeedback] = useState<FeedbackState>(null);
-> 50 |   const [stats, setStats] = useState<QuizStats>({
-     |                                                 ^
-  51 |     correctAnswers: 0,
-  52 |     currentStreak: 0,
-  53 |     maxStreak: 0,
-Next.js build worker exited with code: 1 and signal: null
+    match /quizResults/{resultId} {
+      allow read: if true;
+      allow create: if isValidResult(request.resource.data);
+      allow update: if false;
+      allow delete: if true;
+    }
+  }
+}
