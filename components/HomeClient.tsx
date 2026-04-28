@@ -24,8 +24,17 @@ export function HomeClient() {
   const [draftName, setDraftName] = useState("");
   const [playerName, setPlayerName] = useState("");
   const [busy, setBusy] = useState(false);
+  const [sessionLockedOut, setSessionLockedOut] = useState(false);
 
-  useEffect(() => subscribeToSession(setSession), []);
+  useEffect(() => {
+    return subscribeToSession((nextSession) => {
+      setSession(nextSession);
+
+      if (nextSession.status === "ended") {
+        setSessionLockedOut(true);
+      }
+    });
+  }, []);
   useEffect(() => subscribeToLeaderboard(setResults), []);
 
   const isHostMode = searchParams.get("host") === "1";
@@ -54,7 +63,7 @@ export function HomeClient() {
 
   function handleJoin() {
     const trimmedName = draftName.trim();
-    if (!trimmedName || session.status === "ended") {
+    if (!trimmedName || session.status !== "active" || sessionLockedOut) {
       return;
     }
 
@@ -111,14 +120,34 @@ export function HomeClient() {
             leaderboard={results}
           />
         </section>
+      ) : sessionLockedOut ? (
+        <div className="space-y-4">
+          <section className="rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(9,14,28,0.82),rgba(13,19,37,0.78))] p-6 text-white shadow-[0_24px_70px_rgba(15,23,42,0.42)] backdrop-blur-xl sm:p-7">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-300/70">
+              Session ended
+            </p>
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight text-white sm:text-[1.7rem]">
+              This room has been hard-stopped.
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-slate-300/80">
+              Reload the page to join the next session after the host starts a new round.
+            </p>
+          </section>
+
+          <Leaderboard results={results} highlightName={playerName || undefined} />
+        </div>
       ) : (
-        <div className="w-full">
-          <NameEntry
-            draftName={draftName}
-            onDraftNameChange={setDraftName}
-            onJoin={handleJoin}
-            session={session}
-          />
+        <div className="space-y-4">
+          <div className="w-full">
+            <NameEntry
+              draftName={draftName}
+              onDraftNameChange={setDraftName}
+              onJoin={handleJoin}
+              session={session}
+            />
+          </div>
+
+          <Leaderboard results={results} highlightName={playerName || undefined} />
         </div>
       )}
     </main>

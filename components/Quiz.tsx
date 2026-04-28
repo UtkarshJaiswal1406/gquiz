@@ -187,7 +187,12 @@ export function Quiz({ playerName, session, leaderboard }: QuizProps) {
 
   const resolveAnswer = useCallback(
     (selectedAnswer: string | null) => {
-      if (phase !== "playing" || !currentQuestion || questionLockedRef.current) {
+      if (
+        phase !== "playing" ||
+        !currentQuestion ||
+        questionLockedRef.current ||
+        session.status !== "active"
+      ) {
         return;
       }
 
@@ -224,6 +229,7 @@ export function Quiz({ playerName, session, leaderboard }: QuizProps) {
       stats.difficulty,
       stats.difficultyStreak,
       stats.maxStreak,
+      session.status,
     ],
   );
 
@@ -355,7 +361,7 @@ export function Quiz({ playerName, session, leaderboard }: QuizProps) {
         difficultyLabel={getDifficultyLabel(stats.difficulty)}
         currentStreak={stats.currentStreak}
         secondsLeft={secondsLeft}
-        locked={phase !== "playing"}
+        locked={phase !== "playing" || session.status !== "active"}
         feedback={feedback}
         onSelectAnswer={resolveAnswer}
       />
