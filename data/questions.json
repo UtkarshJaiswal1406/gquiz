@@ -1,0 +1,98 @@
+{
+  "1": [
+    {
+      "id": "d1-1",
+      "question": "Which planet do we live on?",
+      "options": ["Mars", "Earth", "Venus", "Jupiter"],
+      "correctAnswer": "Earth"
+    },
+    {
+      "id": "d1-2",
+      "question": "How many days are in a week?",
+      "options": ["5", "6", "7", "8"],
+      "correctAnswer": "7"
+    },
+    {
+      "id": "d1-3",
+      "question": "Which animal says moo?",
+      "options": ["Cat", "Cow", "Duck", "Sheep"],
+      "correctAnswer": "Cow"
+    },
+    {
+      "id": "d2-1",
+      "question": "Which is the largest ocean on Earth?",
+      "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
+      "correctAnswer": "Pacific"
+    },
+    {
+      "id": "d2-2",
+      "question": "What is 9 x 8?",
+      "options": ["56", "64", "72", "81"],
+      "correctAnswer": "72"
+    },
+    {
+      "id": "d2-3",
+      "question": "Which gas do humans need to breathe?",
+      "options": ["Hydrogen", "Oxygen", "Helium", "Nitrogen"],
+      "correctAnswer": "Oxygen"
+    }
+  ],
+  "2": [
+    {
+      "id": "d3-1",
+      "question": "Who wrote Romeo and Juliet?",
+      "options": ["Charles Dickens", "William Shakespeare", "J.K. Rowling", "Mark Twain"],
+      "correctAnswer": "William Shakespeare"
+    },
+    {
+      "id": "d3-2",
+      "question": "What is the chemical symbol for gold?",
+      "options": ["Ag", "Au", "Go", "Gd"],
+      "correctAnswer": "Au"
+    },
+    {
+      "id": "d3-3",
+      "question": "How many continents are there?",
+      "options": ["5", "6", "7", "8"],
+      "correctAnswer": "7"
+    },
+    {
+      "id": "d4-1",
+      "question": "What is the capital of Canada?",
+      "options": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
+      "correctAnswer": "Ottawa"
+    },
+    {
+      "id": "d4-2",
+      "question": "Which part of a cell contains genetic material?",
+      "options": ["Nucleus", "Ribosome", "Membrane", "Cytoplasm"],
+      "correctAnswer": "Nucleus"
+    },
+    {
+      "id": "d4-3",
+      "question": "What year did the first man land on the moon?",
+      "options": ["1965", "1969", "1971", "1975"],
+      "correctAnswer": "1969"
+    }
+  ],
+  "3": [
+    {
+      "id": "d5-1",
+      "question": "Which programmer created the Linux kernel?",
+      "options": ["Linus Torvalds", "Bjarne Stroustrup", "Dennis Ritchie", "Tim Berners-Lee"],
+      "correctAnswer": "Linus Torvalds"
+    },
+    {
+      "id": "d5-2",
+      "question": "What is the derivative of x^2?",
+      "options": ["x", "2x", "x^2", "2"],
+      "correctAnswer": "2x"
+    },
+    {
+      "id": "d5-3",
+      "question": "Which technology powers React Server Components in this app?",
+      "options": ["Rust", "Webpack only", "The Next.js App Router", "jQuery"],
+      "correctAnswer": "The Next.js App Router"
+    }
+  ]
+}
