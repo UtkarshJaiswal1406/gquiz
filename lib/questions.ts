@@ -39,17 +39,17 @@ type RawQuestion = {
 const questionBank = rawQuestions as Record<string, RawQuestion[]>;
 
 export const questionsByDifficulty: Record<DifficultyLevel, QuizQuestion[]> = {
-  1: questionBank["1"].map((question) => ({
+  1: (questionBank["1"] || []).map((question) => ({
     ...question,
     difficulty: 1,
     options: question.options as ImportedQuestion["options"],
   })),
-  2: questionBank["2"].map((question) => ({
+  2: (questionBank["2"] || []).map((question) => ({
     ...question,
     difficulty: 2,
     options: question.options as ImportedQuestion["options"],
   })),
-  3: questionBank["3"].map((question) => ({
+  3: (questionBank["3"] || []).map((question) => ({
     ...question,
     difficulty: 3,
     options: question.options as ImportedQuestion["options"],

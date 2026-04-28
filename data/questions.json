@@ -1,98 +1,149 @@
 {
   "1": [
     {
-      "id": "d1-1",
-      "question": "Which planet do we live on?",
-      "options": ["Mars", "Earth", "Venus", "Jupiter"],
-      "correctAnswer": "Earth"
+      "id": "gsql-1",
+      "question": "What type of service is Google Cloud SQL?",
+      "options": [
+        "Fully managed relational database service",
+        "NoSQL document database",
+        "In-memory caching service",
+        "Serverless compute platform"
+      ],
+      "correctAnswer": "Fully managed relational database service",
+      "explanation": "Google Cloud SQL is a fully managed relational database service hosted on Google Cloud that handles routine database tasks."
     },
     {
-      "id": "d1-2",
-      "question": "How many days are in a week?",
-      "options": ["5", "6", "7", "8"],
-      "correctAnswer": "7"
+      "id": "gsql-2",
+      "question": "Which of the following database engines is NOT supported by Cloud SQL?",
+      "options": ["MySQL", "MongoDB", "PostgreSQL", "SQL Server"],
+      "correctAnswer": "MongoDB",
+      "explanation": "Cloud SQL supports MySQL, PostgreSQL, and SQL Server. MongoDB is a NoSQL database and is not part of Cloud SQL."
     },
     {
-      "id": "d1-3",
-      "question": "Which animal says moo?",
-      "options": ["Cat", "Cow", "Duck", "Sheep"],
-      "correctAnswer": "Cow"
+      "id": "gsql-3",
+      "question": "What uptime SLA does Google Cloud SQL guarantee?",
+      "options": ["99.00%", "99.50%", "99.95%", "100%"],
+      "correctAnswer": "99.95%",
+      "explanation": "Cloud SQL offers a 99.95% uptime SLA with automatic failover to standby replicas."
     },
     {
-      "id": "d2-1",
-      "question": "Which is the largest ocean on Earth?",
-      "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
-      "correctAnswer": "Pacific"
+      "id": "gsql-4",
+      "question": "Which storage type does Cloud SQL use for high-performance queries?",
+      "options": ["HDD", "SSD", "Tape", "NFS"],
+      "correctAnswer": "SSD",
+      "explanation": "Cloud SQL uses SSD storage along with read replicas and connection pooling for fast, scalable queries."
     },
     {
-      "id": "d2-2",
-      "question": "What is 9 x 8?",
-      "options": ["56", "64", "72", "81"],
-      "correctAnswer": "72"
+      "id": "gsql-5",
+      "question": "What happens to Cloud SQL storage as your data grows?",
+      "options": [
+        "You must manually resize it",
+        "It sends an alert to the admin",
+        "It auto-grows without manual intervention",
+        "It stops accepting new data"
+      ],
+      "correctAnswer": "It auto-grows without manual intervention",
+      "explanation": "Cloud SQL's scalable storage auto-grows as data grows — no manual intervention needed."
     },
     {
-      "id": "d2-3",
-      "question": "Which gas do humans need to breathe?",
-      "options": ["Hydrogen", "Oxygen", "Helium", "Nitrogen"],
-      "correctAnswer": "Oxygen"
-    }
-  ],
-  "2": [
-    {
-      "id": "d3-1",
-      "question": "Who wrote Romeo and Juliet?",
-      "options": ["Charles Dickens", "William Shakespeare", "J.K. Rowling", "Mark Twain"],
-      "correctAnswer": "William Shakespeare"
+      "id": "gsql-17",
+      "question": "What tools can be used to provision and manage Cloud SQL instances?",
+      "options": ["Only the Cloud Console", "Cloud Console, CLI (gcloud), and Terraform", "Only REST API calls", "Only Terraform"],
+      "correctAnswer": "Cloud Console, CLI (gcloud), and Terraform",
+      "explanation": "Cloud SQL supports multiple management interfaces: the Cloud Console, the gcloud CLI, and Terraform for infrastructure-as-code."
     },
     {
-      "id": "d3-2",
-      "question": "What is the chemical symbol for gold?",
-      "options": ["Ag", "Au", "Go", "Gd"],
-      "correctAnswer": "Au"
+      "id": "gsql-18",
+      "question": "What is connection pooling used for in Cloud SQL?",
+      "options": ["Backing up data across regions", "Improving query performance by reusing database connections", "Replicating data to multiple databases", "Encrypting data at rest"],
+      "correctAnswer": "Improving query performance by reusing database connections",
+      "explanation": "Connection pooling allows multiple clients to share a pool of database connections, reducing overhead and improving performance."
     },
     {
-      "id": "d3-3",
-      "question": "How many continents are there?",
-      "options": ["5", "6", "7", "8"],
-      "correctAnswer": "7"
+      "id": "gsql-19",
+      "question": "Which Cloud SQL feature is ideal for distributing read-heavy query workloads?",
+      "options": ["Auto Failover", "Read Replicas", "Point-in-Time Recovery", "Scheduled Backups"],
+      "correctAnswer": "Read Replicas",
+      "explanation": "Read replicas allow read traffic to be distributed across multiple instances, reducing load on the primary and improving performance."
     },
     {
-      "id": "d4-1",
-      "question": "What is the capital of Canada?",
-      "options": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
-      "correctAnswer": "Ottawa"
-    },
-    {
-      "id": "d4-2",
-      "question": "Which part of a cell contains genetic material?",
-      "options": ["Nucleus", "Ribosome", "Membrane", "Cytoplasm"],
-      "correctAnswer": "Nucleus"
-    },
-    {
-      "id": "d4-3",
-      "question": "What year did the first man land on the moon?",
-      "options": ["1965", "1969", "1971", "1975"],
-      "correctAnswer": "1969"
+      "id": "gsql-20",
+      "question": "Which statement correctly describes Cloud SQL's pricing model?",
+      "options": ["Fixed monthly cost regardless of usage", "Pay-per-use with the ability to scale down when idle", "Free for the first 12 months, then fixed pricing", "Priced only by storage, not compute"],
+      "correctAnswer": "Pay-per-use with the ability to scale down when idle",
+      "explanation": "Cloud SQL uses pay-per-use pricing, which means you can reduce costs by scaling down when your workload is idle."
     }
   ],
   "3": [
     {
-      "id": "d5-1",
-      "question": "Which programmer created the Linux kernel?",
-      "options": ["Linus Torvalds", "Bjarne Stroustrup", "Dennis Ritchie", "Tim Berners-Lee"],
-      "correctAnswer": "Linus Torvalds"
+      "id": "gsql-21",
+      "question": "A developer building a .NET enterprise app needs Windows Authentication and Active Directory integration. Which Cloud SQL engine should they choose?",
+      "options": ["MySQL 8.0", "PostgreSQL 15", "SQL Server 2019", "MySQL 5.7"],
+      "correctAnswer": "SQL Server 2019",
+      "explanation": "SQL Server on Cloud SQL supports Windows Authentication, Active Directory, SSMS, and native SQL tooling — purpose-built for .NET enterprise workloads."
     },
     {
-      "id": "d5-2",
-      "question": "What is the derivative of x^2?",
-      "options": ["x", "2x", "x^2", "2"],
-      "correctAnswer": "2x"
+      "id": "gsql-22",
+      "question": "A startup needs a database with rich data types, JSON support, full-text search, and ACID-compliant transactions. Which Cloud SQL engine fits best?",
+      "options": ["MySQL 5.7 with InnoDB", "SQL Server 2017", "PostgreSQL", "All engines support these equally"],
+      "correctAnswer": "PostgreSQL",
+      "explanation": "PostgreSQL on Cloud SQL offers advanced features: rich data types, JSON, full-text search, and full ACID compliance — the best match for this requirement."
     },
     {
-      "id": "d5-3",
-      "question": "Which technology powers React Server Components in this app?",
-      "options": ["Rust", "Webpack only", "The Next.js App Router", "jQuery"],
-      "correctAnswer": "The Next.js App Router"
+      "id": "gsql-23",
+      "question": "An architect wants to connect Cloud SQL structured data to BigQuery for business analytics. Which Cloud SQL use case does this represent?",
+      "options": ["SaaS multi-tenant architecture", "Mobile backend with Firebase", "Analytics & Reporting pipeline", "E-commerce ACID transaction processing"],
+      "correctAnswer": "Analytics & Reporting pipeline",
+      "explanation": "Storing structured data in Cloud SQL and querying it via BigQuery or Looker is the Analytics & Reporting use case."
+    },
+    {
+      "id": "gsql-24",
+      "question": "A company has multiple clients, each requiring an isolated and independently scalable database. Which Cloud SQL use case applies?",
+      "options": ["E-Commerce Platforms", "Mobile & Web Applications", "Analytics & Reporting", "SaaS Applications with multi-tenant architectures"],
+      "correctAnswer": "SaaS Applications with multi-tenant architectures",
+      "explanation": "Cloud SQL supports SaaS applications needing multi-tenant architectures where each tenant gets an isolated, scalable database instance."
+    },
+    {
+      "id": "gsql-25",
+      "question": "Traffic from a client application to Cloud SQL is secured by which combination of mechanisms according to its architecture?",
+      "options": ["VPN tunnel only", "Google's private VPC network and SSL proxy authentication/encryption", "Public internet with TLS certificates only", "IPSec tunneling managed by the client"],
+      "correctAnswer": "Google's private VPC network and SSL proxy authentication/encryption",
+      "explanation": "Traffic is secured via Google's private VPC network, then authenticated and encrypted by the Cloud SQL SSL Proxy before reaching the instance."
+    },
+    {
+      "id": "gsql-26",
+      "question": "Which MySQL feature listed in Cloud SQL makes it particularly suitable for web apps and CMS platforms?",
+      "options": ["JSON support and full-text search", "Windows Auth and Active Directory integration", "InnoDB storage engine with full replication and failover support", "ACID-compliant object-relational features"],
+      "correctAnswer": "InnoDB storage engine with full replication and failover support",
+      "explanation": "MySQL on Cloud SQL uses the InnoDB storage engine with full replication and failover support — making it ideal for web apps and CMS platforms needing reliability."
+    },
+    {
+      "id": "gsql-27",
+      "question": "A team wants zero servers to manage, automatic scaling, and deep integration with Firebase and App Engine. Which Cloud SQL benefit directly supports this need?",
+      "options": ["99.95% SLA", "0 servers to manage — fully serverless operation", "3 database engines on one platform", "Pay-per-use pricing"],
+      "correctAnswer": "0 servers to manage — fully serverless operation",
+      "explanation": "Cloud SQL advertises 0 servers to manage, enabling teams to focus on app development using services like Firebase and App Engine without infrastructure concerns."
+    },
+    {
+      "id": "gsql-28",
+      "question": "How does Cloud SQL's automatic failover differ from simply using a read replica?",
+      "options": ["Read replicas serve live traffic; failover replicas only activate on primary failure", "They are identical — both serve traffic simultaneously", "Failover replicas handle writes; read replicas handle schema changes", "There is no difference; all replicas act as failover targets"],
+      "correctAnswer": "Read replicas serve live traffic; failover replicas only activate on primary failure",
+      "explanation": "Read replicas serve ongoing read traffic. The standby failover replica is on standby and only becomes active when the primary instance fails."
+    },
+    {
+      "id": "gsql-29",
+      "question": "A team needs to ensure their Cloud SQL infrastructure can be version-controlled and deployed repeatedly. Which management approach best supports this?",
+      "options": ["Cloud Console GUI", "gcloud CLI commands", "Terraform infrastructure-as-code", "Manual SQL scripts"],
+      "correctAnswer": "Terraform infrastructure-as-code",
+      "explanation": "Terraform allows Cloud SQL infrastructure to be defined as code, enabling version control, repeatable deployments, and automated provisioning pipelines."
+    },
+    {
+      "id": "gsql-30",
+      "question": "Which combination of Cloud SQL capabilities together delivers high availability (HA) for a production database?",
+      "options": ["Scalable storage + scheduled backups", "Auto failover + standby replica + 99.95% SLA", "Read replicas + connection pooling", "IAM integration + VPC + private IP"],
+      "correctAnswer": "Auto failover + standby replica + 99.95% SLA",
+      "explanation": "High availability in Cloud SQL is achieved through automatic failover to a standby replica, backed by the 99.95% uptime SLA — ensuring continuity during failure events."
     }
   ]
 }
